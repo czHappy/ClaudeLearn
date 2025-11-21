@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/cz/workspace"
+      ],
+      "env": {}
+    },
+    "weather": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/cz/workspace/mcp/weather",
+        "run",
+        "weather.py"
+      ]
+    },
+    "key-manager": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/cz/workspace/mcp/key_manager",
+        "run",
+        "src/server.py"
+      ]
+    }
+  }
+}
