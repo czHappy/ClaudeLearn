@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - 贪吃蛇</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1 class="game-title">SNAKE</h1>
+            <p class="game-subtitle">贪吃蛇</p>
+        </header>
+
+        <!-- 分数面板 -->
+        <div class="score-panel">
+            <div class="score-item">
+                <span class="score-label">分数</span>
+                <span class="score-value" id="current-score">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">最高分</span>
+                <span class="score-value" id="high-score">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">速度</span>
+                <span class="score-value" id="speed-level">1</span>
+            </div>
+        </div>
+
+        <!-- 游戏画布区域 -->
+        <div class="canvas-wrapper">
+            <canvas id="game-canvas" width="500" height="500"></canvas>
+
+            <!-- 游戏覆盖层 - 开始/暂停/结束 -->
+            <div class="game-overlay" id="game-overlay">
+                <div class="overlay-content">
+                    <h2 class="overlay-title" id="overlay-title">准备开始</h2>
+                    <p class="overlay-message" id="overlay-message">按 SPACE 开始游戏</p>
+                    <button class="game-btn" id="start-btn">开始游戏</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="control-panel">
+            <button class="control-btn" id="pause-btn">
+                <span class="btn-icon">⏸</span>
+                <span class="btn-text">暂停</span>
+            </button>
+            <button class="control-btn" id="restart-btn">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">重新开始</span>
+            </button>
+        </div>
+
+        <!-- 操作说明 -->
+        <div class="instructions">
+            <h3>操作说明</h3>
+            <div class="key-hints">
+                <div class="key-group">
+                    <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
+                    <span>或</span>
+                    <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+                </div>
+                <p>控制蛇的移动方向</p>
+            </div>
+            <div class="key-hints">
+                <kbd>SPACE</kbd>
+                <p>暂停 / 继续游戏</p>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="game-footer">
+            <p>Made with ❤️ using HTML5 Canvas</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="snake-game.js"></script>
+</body>
+</html>
