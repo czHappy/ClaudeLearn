@@ -9,7 +9,7 @@
 using namespace std;
 
 // ============================================
-// Character 基类 - 请完成此类
+// Character 基类
 // ============================================
 class Character {
 protected:
@@ -20,37 +20,53 @@ protected:
     string school;
 
 public:
-    // TODO: 实现构造函数
-    Character(string n, int health, int attack, string sch) {
-        // 在这里初始化所有成员变量
+    // 构造函数
+    Character(string n, int health, int attack, string sch)
+        : name(n), hp(health), maxHp(health), attackPower(attack), school(sch) {
     }
 
-    // TODO: 实现纯虚函数 attack（子类必须实现）
+    // 纯虚函数 - 子类必须实现
     virtual void attack(Character* target) = 0;
 
-    // TODO: 实现 takeDamage 方法
+    // 受到伤害
     void takeDamage(int damage) {
-        // 减少生命值，确保不低于0
+        hp -= damage;
+        if (hp < 0) hp = 0;
+        cout << name << " 受到 " << damage << " 点伤害！";
+        if (hp == 0) {
+            cout << " (已阵亡)";
+        }
+        cout << endl;
     }
 
-    // TODO: 实现 isAlive 方法
+    // 判断是否存活
     bool isAlive() {
-        // 返回角色是否还活着
-        return false;  // 修改这里
+        return hp > 0;
     }
 
-    // TODO: 实现 showStatus 方法（显示生命值进度条）
+    // 显示状态（生命值进度条）
     void showStatus() {
-        // 格式：角色名 [████████░░] 80/100 HP
-        // 提示：10格进度条，根据 hp/maxHp 计算填充格数
+        cout << "[" << school << "] " << name << " ";
+
+        // 计算进度条
+        int filled = (hp * 10) / maxHp;
+        cout << "[";
+        for (int i = 0; i < 10; i++) {
+            if (i < filled) {
+                cout << "█";
+            } else {
+                cout << "░";
+            }
+        }
+        cout << "] " << hp << "/" << maxHp << " HP" << endl;
     }
 
-    // 虚函数：显示技能信息（子类可以重写）
+    // 显示技能信息
     virtual void showSkillInfo() {
         cout << "[" << school << "] " << name << " 的技能信息" << endl;
     }
 
-    // 虚析构函数（非常重要！）
+    // 虚析构函数
     virtual ~Character() {}
 
     // 辅助方法
